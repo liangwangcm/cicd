@@ -36,4 +36,3 @@ jobs:
       - uses: maierj/fastlane-action@v2.2.0
         with:
           lane: 'tests'
-          subdirectory: 'ios'
