@@ -29,16 +29,14 @@ platform :ios do
   end
   lane :tests do
     run_tests(
-      scheme: "WTP_Leisure_Dev_UnitTests",
+      scheme: "cicd",
       # devices: ["iPhone 7", "iPhone 12"],
       build_for_testing: true,
-      slack_url: "https://hooks.slack.com/services/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",
-      slack_channel: "#webhook"
       )
   end
   lane :multiscan do
     multi_scan(
-      scheme: "WTP_Leisure_Dev_UnitTests",
+      scheme: "cicd",
       try_count: 3,
       batch_count: 4,
       parallel_testrun_count: 4,
