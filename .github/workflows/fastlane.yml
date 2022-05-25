@@ -35,5 +35,5 @@ jobs:
           ruby-version: '2.7.2'
       - uses: maierj/fastlane-action@v2.2.0
         with:
-          lane: 'tests',
+          lane: 'tests'
           bundle-install-path: 'vendor/bundle'
