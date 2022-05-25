@@ -1,0 +1,47 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :staging do
+    increment_build_number(xcodeproj: "TravelAssist.xcodeproj")
+    build_app(workspace: "TravelAssist.xcworkspace", scheme: "WTP_Leisure_Staging")
+    upload_to_testflight
+  end
+  lane :pro do
+    increment_build_number(xcodeproj: "TravelAssist.xcodeproj")
+    build_app(workspace: "TravelAssist.xcworkspace", scheme: "WTP_Leisure_Prod")
+    upload_to_testflight
+  end
+  lane :tests do
+    run_tests(
+      scheme: "WTP_Leisure_Dev_UnitTests",
+      # devices: ["iPhone 7", "iPhone 12"],
+      build_for_testing: true,
+      slack_url: "https://hooks.slack.com/services/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",
+      slack_channel: "#webhook"
+      )
+  end
+  lane :multiscan do
+    multi_scan(
+      scheme: "WTP_Leisure_Dev_UnitTests",
+      try_count: 3,
+      batch_count: 4,
+      parallel_testrun_count: 4,
+    )
+  end
+end

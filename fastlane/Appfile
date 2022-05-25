@@ -1,0 +1,20 @@
+for_lane :staging do
+    app_identifier("com.wtp.leisure.staging") # The bundle identifier of your app
+    apple_id("liang.wang@covermore.com") # Your Apple email address
+
+    itc_team_id("118431882") # App Store Connect Team ID
+    team_id("QKKG73AB8R") # Developer Portal Team ID
+end
+
+for_lane :pro do
+    app_identifier("com.travelexinsurance.travelon") # The bundle identifier of your app
+    apple_id("liang.wang@covermore.com") # Your Apple email address
+
+    itc_team_id("122528672") # App Store Connect Team ID
+    team_id("Q57YJW3C38") # Developer Portal Team ID
+end
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
+
+# You can get itc_team_id from: https://appstoreconnect.apple.com/WebObjects/iTunesConnect.woa/ra/user/detail
