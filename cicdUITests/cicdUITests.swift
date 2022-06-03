@@ -32,6 +32,7 @@ class cicdUITests: BaseXCTestCase {
         sleep(1)
         emailTextField.typeText("cmmagiclinktest@gmail.com")
         safari.keyboards.buttons["Return"].tap()
+        sleep(1)
         
         let passwordTextField = waitFor(safari.webViews.secureTextFields["Enter your password"])
         passwordTextField.tap()
@@ -43,12 +44,15 @@ class cicdUITests: BaseXCTestCase {
         notInterested.tap()
         
         // Now we are in gmail home page
+    
         
-//        let firstUnreadMail = waitFor(safari.webViews.buttons["Unread. travelon@travelexinsuran. Travelex One-Time Login"].firstMatch)
-//        firstUnreadMail.tap()
-        
-        let firstReadMail = waitFor(safari.webViews.buttons["travelon@travelexinsuran. Travelex One-Time Login"].firstMatch)
-        firstReadMail.tap()
+        if !useValidDeepLink {
+            let firstReadMail = waitFor(safari.webViews.buttons["travelon@travelexinsuran. Travelex One-Time Login"].firstMatch)
+            firstReadMail.tap()
+        } else {
+            let firstUnreadMail = waitFor(safari.webViews.buttons["Unread. travelon@travelexinsuran. Travelex One-Time Login"].firstMatch)
+            firstUnreadMail.tap()
+        }
         
         
         let deepLinkButton = waitFor(safari.webViews.staticTexts["Login"])
