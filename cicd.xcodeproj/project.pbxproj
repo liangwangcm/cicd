@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27E7D46228498C4900CB9DD2 /* BaseXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7D45F28498C4900CB9DD2 /* BaseXCTestCase.swift */; };
+		27E7D46328498C4900CB9DD2 /* XCUIApplication + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7D46028498C4900CB9DD2 /* XCUIApplication + Extensions.swift */; };
+		27E7D46428498C4900CB9DD2 /* XCUIElement + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7D46128498C4900CB9DD2 /* XCUIElement + Extensions.swift */; };
 		27EB703328321D590089A8AA /* cicdApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB703228321D590089A8AA /* cicdApp.swift */; };
 		27EB703528321D590089A8AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB703428321D590089A8AA /* ContentView.swift */; };
 		27EB703728321D5A0089A8AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27EB703628321D5A0089A8AA /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27E7D45F28498C4900CB9DD2 /* BaseXCTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseXCTestCase.swift; sourceTree = "<group>"; };
+		27E7D46028498C4900CB9DD2 /* XCUIApplication + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIApplication + Extensions.swift"; sourceTree = "<group>"; };
+		27E7D46128498C4900CB9DD2 /* XCUIElement + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIElement + Extensions.swift"; sourceTree = "<group>"; };
 		27EB702F28321D590089A8AA /* cicd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cicd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EB703228321D590089A8AA /* cicdApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cicdApp.swift; sourceTree = "<group>"; };
 		27EB703428321D590089A8AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +127,9 @@
 		27EB704C28321D5A0089A8AA /* cicdUITests */ = {
 			isa = PBXGroup;
 			children = (
+				27E7D45F28498C4900CB9DD2 /* BaseXCTestCase.swift */,
+				27E7D46028498C4900CB9DD2 /* XCUIApplication + Extensions.swift */,
+				27E7D46128498C4900CB9DD2 /* XCUIElement + Extensions.swift */,
 				27EB704D28321D5A0089A8AA /* cicdUITests.swift */,
 				27EB704F28321D5A0089A8AA /* cicdUITestsLaunchTests.swift */,
 			);
@@ -274,7 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E7D46428498C4900CB9DD2 /* XCUIElement + Extensions.swift in Sources */,
 				27EB704E28321D5A0089A8AA /* cicdUITests.swift in Sources */,
+				27E7D46328498C4900CB9DD2 /* XCUIApplication + Extensions.swift in Sources */,
+				27E7D46228498C4900CB9DD2 /* BaseXCTestCase.swift in Sources */,
 				27EB705028321D5A0089A8AA /* cicdUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

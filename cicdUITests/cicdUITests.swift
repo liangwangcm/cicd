@@ -7,35 +7,66 @@
 
 import XCTest
 
-class cicdUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+class cicdUITests: BaseXCTestCase {
+    
+    private var launchArguments: [String] = ["--Reset"]
+    
+    func testGmailLogin() throws {
+        openDeepLinkInGmail(useValidDeepLink: false)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func openDeepLinkInGmail(useValidDeepLink: Bool) {
+        clearSafariData()
+        
+        let safari = XCUIApplication(bundleIdentifier: "com.apple.mobilesafari")
+
+        safari.launch()
+        let _ = safari.wait(for: .runningForeground, timeout: 10)
+        
+        safari.textFields["Address"].tap()
+        safari.textFields["Address"].typeText("https://mail.google.com")
+        safari.keyboards.buttons["Go"].tap()
+        
+        let emailTextField = waitFor(safari.webViews.textFields["Email or phone"])
+        emailTextField.tap()
+        sleep(1)
+        emailTextField.typeText("cmmagiclinktest@gmail.com")
+        safari.keyboards.buttons["Return"].tap()
+        
+        let passwordTextField = waitFor(safari.webViews.secureTextFields["Enter your password"])
+        passwordTextField.tap()
+        sleep(1)
+        passwordTextField.typeText("Test@123")
+        safari.keyboards.buttons["go"].tap()
+        
+        let notInterested = waitFor(safari.webViews.staticTexts["I am not interested"])
+        notInterested.tap()
+        
+        // Now we are in gmail home page
+        
+//        let firstUnreadMail = waitFor(safari.webViews.buttons["Unread. travelon@travelexinsuran. Travelex One-Time Login"].firstMatch)
+//        firstUnreadMail.tap()
+        
+        let firstReadMail = waitFor(safari.webViews.buttons["travelon@travelexinsuran. Travelex One-Time Login"].firstMatch)
+        firstReadMail.tap()
+        
+        
+        let deepLinkButton = waitFor(safari.webViews.staticTexts["Login"])
+        deepLinkButton.tap()
+        
+//        app.activate() // go back to app
+
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    func clearSafariData() {
+      let settingsApp = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
+      settingsApp.terminate() // this is to make sure it's reset
+      settingsApp.launch()
+      settingsApp.cells["Safari"].tap()
+      
+      settingsApp.tables.staticTexts["CLEAR_HISTORY_AND_DATA"].tap()
+      settingsApp.sheets["Clearing will remove history, cookies, and other browsing data."].scrollViews.otherElements.buttons["Clear History and Data"].tap()
+        
+      settingsApp.terminate()
     }
 }
